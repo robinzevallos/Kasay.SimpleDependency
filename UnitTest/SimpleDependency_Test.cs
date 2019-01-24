@@ -4,11 +4,6 @@ using Xunit;
 
 public class SimpleDependency_Test
 {
-    public SimpleDependency_Test()
-    {
-        SimpleDependency.Init();
-    }
-
     [Fact]
     public void ExternalAssembly_Test()
     {

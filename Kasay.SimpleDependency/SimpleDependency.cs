@@ -1,6 +1,7 @@
 ﻿using Kasay.SimpleDependency;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Reflection;
 
 public static class SimpleDependency
@@ -8,17 +9,20 @@ public static class SimpleDependency
     static AssemblyFactory assemblyBuilder;
     static Dictionary<Type, Object> dependencyImplementations;
 
-    public static void Init()
+    public static T GetInstance<T>()
+    {
+        if (dependencyImplementations is null)
+            Init();
+
+        return (T)dependencyImplementations[typeof(T)];
+    }
+
+    static void Init()
     {
         assemblyBuilder = new AssemblyFactory();
         dependencyImplementations = new Dictionary<Type, Object>();
 
         AddInstances();
-    }
-
-    public static T GetInstance<T>()
-    {
-        return (T)dependencyImplementations[typeof(T)];
     }
 
     static void AddInstances()
