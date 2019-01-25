@@ -29,7 +29,7 @@ namespace Kasay.SimpleDependency
 
         IEnumerable<String> GetAssemblyNames()
         {
-            var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var path = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
             var dllFiles = new DirectoryInfo(path).GetFiles("*.dll");
             var assemblyNames = dllFiles.Select(_ => _.Name.Substring(0, _.Name.IndexOf(".dll")));
 

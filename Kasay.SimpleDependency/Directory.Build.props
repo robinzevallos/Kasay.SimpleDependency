@@ -4,7 +4,7 @@
     <Authors>Robin Zevallos</Authors>
     <Description>Simple dependency injection.</Description>
     <PackageTags>DependencyInjection, Dependency</PackageTags>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <PropertyGroup>
