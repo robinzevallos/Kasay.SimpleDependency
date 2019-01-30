@@ -20,7 +20,16 @@ namespace Kasay.SimpleDependency
         {
             foreach (var assemblyName in assemblyNames)
             {
-                var assembly = AppDomain.CurrentDomain.Load(assemblyName);
+                Assembly assembly;
+
+                try
+                {
+                    assembly = AppDomain.CurrentDomain.Load(assemblyName);
+                }
+                catch
+                {
+                    continue;
+                }
 
                 if (IsTargetAssembly(assembly))
                     yield return assembly;
@@ -29,9 +38,10 @@ namespace Kasay.SimpleDependency
 
         IEnumerable<String> GetAssemblyNames()
         {
-            var path = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
+            var path = AppDomain.CurrentDomain.BaseDirectory;
             var dllFiles = new DirectoryInfo(path).GetFiles("*.dll");
-            var assemblyNames = dllFiles.Select(_ => _.Name.Substring(0, _.Name.IndexOf(".dll")));
+            var assemblyNames = dllFiles
+                .Select(_ => _.Name.Substring(0, _.Name.IndexOf(".dll")));
 
             return assemblyNames;
         }
