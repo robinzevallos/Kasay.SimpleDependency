@@ -9,11 +9,11 @@ namespace Kasay.SimpleDependency
 
     internal class AssemblyFactory
     {
-        readonly IEnumerable<String> assemblyNames;
+        readonly List<String> assemblyNames = new List<String>();
 
         public AssemblyFactory()
         {
-            assemblyNames = GetAssemblyNames();
+            AddAssemblyNames();
         }
 
         internal IEnumerable<Assembly> GetAssemblies()
@@ -34,6 +34,15 @@ namespace Kasay.SimpleDependency
                 if (IsTargetAssembly(assembly))
                     yield return assembly;
             }
+        }
+
+        void AddAssemblyNames()
+        {
+            //For files .exe
+            var currentAsemblyName = AppDomain.CurrentDomain.FriendlyName;
+            assemblyNames.Add(currentAsemblyName);
+
+            assemblyNames.AddRange(GetAssemblyNames());
         }
 
         IEnumerable<String> GetAssemblyNames()
