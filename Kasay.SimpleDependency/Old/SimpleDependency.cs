@@ -1,10 +1,9 @@
 ﻿using Kasay.SimpleDependency;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Reflection;
 
-public static class SimpleDependency
+internal static class SimpleDependency
 {
     static AssemblyFactory assemblyBuilder;
     static Dictionary<Type, Object> dependencyImplementations;

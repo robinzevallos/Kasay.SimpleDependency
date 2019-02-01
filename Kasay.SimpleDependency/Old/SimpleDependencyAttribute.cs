@@ -1,7 +1,7 @@
 ﻿using System;
 
 [AttributeUsage(AttributeTargets.Class)]
-public class SimpleDependencyAttribute : Attribute
+internal class SimpleDependencyAttribute : Attribute
 {
     public Type Implementor { get; }
 

@@ -7,13 +7,13 @@ public class SimpleDependency_Test
     [Fact]
     public void ExternalAssembly_Test()
     {
-        var instanceExpected = SimpleDependency.GetInstance<IDemoExternal>();
-        var instanceActual = SimpleDependency.GetInstance<IDemoExternal>();
+        var instanceExpected = Instance<IDemoExternal>.Get();
+        var instanceActual = Instance<IDemoExternal>.Get();
 
         Assert.Same(instanceExpected, instanceActual);
 
-        SimpleDependency.GetInstance<IDemoExternal>().Name = "OtherName";
-        var name = SimpleDependency.GetInstance<IDemoExternal>().Name;
+        Instance<IDemoExternal>.Get().Name = "OtherName";
+        var name = Instance<IDemoExternal>.Get().Name;
 
         Assert.Equal("OtherName", name);
     }
@@ -21,13 +21,13 @@ public class SimpleDependency_Test
     [Fact]
     public void InternalAssembly_Test()
     {
-        var instanceExpected = SimpleDependency.GetInstance<IDemoInternal>();
-        var instanceActual = SimpleDependency.GetInstance<IDemoInternal>();
+        var instanceExpected = Instance<IDemoInternal>.Get();
+        var instanceActual = Instance<IDemoInternal>.Get();
 
         Assert.Same(instanceExpected, instanceActual);
 
-        SimpleDependency.GetInstance<IDemoInternal>().Name = "OtherName";
-        var name = SimpleDependency.GetInstance<IDemoInternal>().Name;
+        Instance<IDemoInternal>.Get().Name = "OtherName";
+        var name = Instance<IDemoInternal>.Get().Name;
 
         Assert.Equal("OtherName", name);
     }

@@ -2,7 +2,6 @@
 {
     using System;
 
-    [SimpleDependency(typeof(IDemoExternal))]
     public class DemoExternal : IDemoExternal
     {
         public String Name { get; set; } = "DemoExternal";
